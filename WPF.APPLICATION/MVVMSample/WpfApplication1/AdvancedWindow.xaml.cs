@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace WpfApplication1
+namespace MVVMSample
 {
     /// <summary>
     /// Interaction logic for AdvancedWindow.xaml

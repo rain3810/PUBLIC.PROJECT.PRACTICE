@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace WpfApplication1
+namespace MVVMSample
 {
     public class Person : INotifyPropertyChanged
     {
