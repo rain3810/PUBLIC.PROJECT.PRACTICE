@@ -6,6 +6,10 @@
 >>### 01.1 MVVMSample 
 >>MVVM 파악 및 이해를 위한 연습
 >>참고 : https://www.codeproject.com/Articles/1112919/MVVM-for-Beginners   
+
+>>### 01.2 WPFCommandsDemo 
+>>Command 파악 및 이해를 위한 연습
+>>참고 : https://blog.naver.com/goldrushing/221243250136   
    
 >>## 02 WEB
     예정
