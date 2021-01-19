@@ -1,7 +1,7 @@
 # PRIVATE.PROJECT.PRACTICE
     공부하기 위한 샘플 연습용입니다.
 
-<br>>## WPF.APPLICATION
+>## WPF.APPLICATION
     WPF 응용 프로그램 연습용
 
 * * *
