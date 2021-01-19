@@ -7,9 +7,9 @@
 * * *
 1. **MVVMSample** <br>
 `목적` MVVM 파악 및 이해를 위한 연습<br>
-`참고` https://www.codeproject.com/Articles/1112919/MVVM-for-Beginners  
-`COMMENT1` Command(ICommand)가 바인딩을 위한 이벤트를 가지고,  ViewModel이 Command객체를 소유하고 있음.
-`COMMENT2` CodeBehind의 역할을 하는 것이 ViewModel (Execute 기능 수행)
+`참고` https://www.codeproject.com/Articles/1112919/MVVM-for-Beginners  <br>
+`COMMENT1` Command(ICommand)가 바인딩을 위한 이벤트를 가지고,  ViewModel이 Command객체를 소유하고 있음.<br>
+`COMMENT2` CodeBehind의 역할을 하는 것이 ViewModel (Execute 기능 수행)<br>
 ***
 
 02. **WPFCommandsDemo** <br>
