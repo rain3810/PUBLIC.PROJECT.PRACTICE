@@ -9,21 +9,25 @@ namespace WPFCommandsDemo
 {
     public class Command : ICommand
     {
+        Action<object> _executeMethod;
+        Func<object, bool> _canexecuteMethod;
+
         public event EventHandler CanExecuteChanged;
 
-        public Command()
+        public Command(Action<object> getExecuteMethod, Func<object, bool> getCanExecuteMethod)
         {
-
+            this._executeMethod = getExecuteMethod;
+            this._canexecuteMethod = getCanExecuteMethod;
         }
 
         public bool CanExecute(object parameter)
         {
-            throw new NotImplementedException();
+            return true;
         }
 
         public void Execute(object parameter)
         {
-            throw new NotImplementedException();
+            this._executeMethod(parameter);
         }
     }
 }

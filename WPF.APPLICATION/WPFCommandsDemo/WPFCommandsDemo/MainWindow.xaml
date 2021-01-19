@@ -6,7 +6,10 @@
         xmlns:local="clr-namespace:WPFCommandsDemo"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+        <local:ViewModel x:Key="vm" />
+    </Window.Resources>
     <Grid Margin="142,131,113,197">
-        <Button />
+        <Button Command="{Binding MyCommand, Source={StaticResource vm}}" />
     </Grid>
 </Window>
