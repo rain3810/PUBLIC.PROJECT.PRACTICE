@@ -6,12 +6,12 @@
 
 * * *
 1. **MVVMSample** <br>`MVVM` 파악 및 이해를 위한 연습
-* 참고 : https://www.codeproject.com/Articles/1112919/MVVM-for-Beginners   <br>
-
+* 참고 : https://www.codeproject.com/Articles/1112919/MVVM-for-Beginners  
+***
 
 02. **WPFCommandsDemo** <br>`Command` 파악 및 이해를 위한 연습
 * 참고 : https://blog.naver.com/goldrushing/221243250136   
-
+***
  
 03. **WPFCommandsDemo2** <br>`Command` 및 `ViewModel` 파악 및 이해를 위한 연습
 	
