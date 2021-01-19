@@ -18,7 +18,7 @@
 ***
  
 03. **WPFCommandsDemo2** <br>
-`목적` Command 및 ViewModel 파악 및 이해를 위한 연습
+`목적` Command 및 ViewModel 파악 및 이해를 위한 연습<br>
 `참고` https://blog.naver.com/goldrushing/221245773946 <br><br><br>
 
 	
