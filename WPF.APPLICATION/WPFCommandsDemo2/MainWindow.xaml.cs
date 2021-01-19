@@ -23,6 +23,7 @@ namespace WPFCommandsDemo2
         public MainWindow()
         {
             InitializeComponent();
+            this.DataContext = new ViewModel.MessageViewModel();
         }
     }
 }

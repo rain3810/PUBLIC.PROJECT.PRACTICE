@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVVMSample", "MVVMSample\Wp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPFCommandsDemo", "WPFCommandsDemo\WPFCommandsDemo\WPFCommandsDemo.csproj", "{DE3FECB5-4ECB-4ACC-A91A-E66BA2F802B8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPFCommandsDemo2", "WPFCommandsDemo2\WPFCommandsDemo2.csproj", "{C17C8692-14BB-40A5-8843-8641B19A2883}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{DE3FECB5-4ECB-4ACC-A91A-E66BA2F802B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DE3FECB5-4ECB-4ACC-A91A-E66BA2F802B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DE3FECB5-4ECB-4ACC-A91A-E66BA2F802B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C17C8692-14BB-40A5-8843-8641B19A2883}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C17C8692-14BB-40A5-8843-8641B19A2883}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C17C8692-14BB-40A5-8843-8641B19A2883}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C17C8692-14BB-40A5-8843-8641B19A2883}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -17,6 +17,8 @@ namespace WPFCommandsDemo
             MyCommand = new Command(ExecutMethod, CanExecuteMethod);
         }
 
+        //코드 비하인드 처럼 
+
         void ExecutMethod(object obj)
         {
             MessageBox.Show("코드비하인드가 아닌 Command ExecuteMethod");
