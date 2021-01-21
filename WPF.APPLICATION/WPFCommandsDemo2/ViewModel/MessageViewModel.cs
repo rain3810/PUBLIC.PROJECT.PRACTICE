@@ -9,6 +9,7 @@ namespace WPFCommandsDemo2.ViewModel
 {
     /// <summary>
     /// 바인딩할 객체같은것
+    /// 동작할 함수와 속성을 관리하고 해당 함수들은 COmmand에 넘겨 이벤트 시 동작하도록 한다.
     /// </summary>
     public class MessageViewModel
     {
