@@ -9,7 +9,7 @@
     <Grid>
         <StackPanel Width="300" >
             <TextBox>Messages</TextBox>
-            <ComboBox x:Name="cbxList" ItemsSource="{Binding MyMessages}" />
+            <ListView x:Name="cbxList" ItemsSource="{Binding MyMessages}" />
             <Button Content="Message Box" Command="{Binding MessageBoxCommand}" CommandParameter="{Binding SelectedItem, ElementName=cbxList}"/>
             <Button Content="Console Log" Command="{Binding ConsoleCommand}" CommandParameter="{Binding SelectedItem, ElementName=cbxList}"/>
         </StackPanel>
