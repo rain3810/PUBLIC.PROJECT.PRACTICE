@@ -17,16 +17,16 @@ namespace WPFCommandsDemo2.ViewModel
         {
             get; private set;
         }
-        public string MessageText { get; set; }
+        //public string MessageText { get; set; }
 
         public MessageViewModel()
         {
             this.DisplayMessageCommand = new Command.MessageCommand(DisplayMessage);
         }
 
-        public void DisplayMessage()
+        public void DisplayMessage(string getMessageText)
         {
-            MessageBox.Show(MessageText);
+            MessageBox.Show(getMessageText);
         }
     }
 

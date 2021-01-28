@@ -13,9 +13,9 @@ namespace WPFCommandsDemo2.ViewModel.Command
     public class MessageCommand : ICommand
     {
         public event EventHandler CanExecuteChanged;
-        Action _execute;
+        Action<string> _execute;
 
-        public MessageCommand(Action execute)
+        public MessageCommand(Action<string> execute)
         {
             this._execute = execute;
         }
@@ -33,7 +33,7 @@ namespace WPFCommandsDemo2.ViewModel.Command
 
         public void Execute(object parameter)
         {
-            this._execute.Invoke();
+            this._execute.Invoke((string)parameter);
         }
     }
 }

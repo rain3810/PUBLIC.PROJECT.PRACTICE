@@ -7,8 +7,10 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <TextBox HorizontalAlignment="Left" Height="55" Margin="285,177,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="180" Text="{Binding MessageText, Mode=OneWayToSource}"/>
-        <Button Content="메세지 보여주기" HorizontalAlignment="Left" Margin="285,278,0,0" VerticalAlignment="Top" Width="180" Height="70" Command="{Binding DisplayMessageCommand}"/>
+        <TextBox x:Name="txtMyText" HorizontalAlignment="Left" Height="55" Margin="285,177,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="180"/>
+        <!--Text="{Binding MessageText, Mode=OneWayToSource}"/>-->
+        <Button Content="메세지 보여주기" HorizontalAlignment="Left" Margin="285,278,0,0" VerticalAlignment="Top" Width="180" Height="70" 
+                Command="{Binding DisplayMessageCommand}" CommandParameter="{Binding Text, ElementName=txtMyText}"/>
 
 
     </Grid>
