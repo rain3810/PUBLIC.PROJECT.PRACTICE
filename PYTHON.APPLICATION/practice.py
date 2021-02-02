@@ -130,4 +130,147 @@
 # print("생성된 비밀번호 : ", password)
 
 
+##리스트[]
+#지하철 칸별로 10,20,30,명
+# subway1= 10
+# subway2 =20
+# subway3 = 30
+# subway= [10,20,30]
 
+# print( subway)
+
+# subway = ["유재석", "조세호", "박명수"]
+# print(subway)
+
+# #조세호가 몇번째칸?
+# print(subway.index("조세호"))
+
+# # 하하가 다음 정류장에서 승차
+# subway.append("하하")
+# print(subway)
+
+# #사이에 집어넣기
+# subway.insert(1, "정형돈")
+# print(subway)
+
+# print(subway.pop())
+# print(subway)
+
+# #같은 이름의 사람 몇명
+# subway.append("유재석")
+# print(subway)
+# print( subway.count("유재석"))
+
+#정렬
+# num_list =[5,2,4,3,1]
+# num_list.sort()
+# print( num_list)
+
+# #정렬뒤집기
+# num_list.reverse()
+# print(num_list)
+
+# #모두 삭제
+# num_list.clear()
+# print(num_list)
+
+# #다양한 자료형의 리스트
+# mix_list = ['조세호', 20, True]
+# num_list =[5,2,4,3,1]
+
+# #리스트 확장
+# num_list.extend(mix_list)
+# print(mix_list)
+
+#사전###############
+#키의 중복이 허용되지 않음
+# cabinet = {3:"유재석", 100:'김태호'}
+# print(cabinet[3])
+# print(cabinet[100])
+
+# print(cabinet.get(3))
+# print(cabinet.get(101)) #nune
+# print(cabinet.get(101, '사용가능')) #사용가능
+
+# print(3 in cabinet)
+# print(5 in cabinet)
+
+# cabinet= {'a-3':"유재석", 'b-100':'김태호'} 
+# print(cabinet['a-3'])
+
+# #새손님
+# cabinet['c-20'] = '조세호'
+# print(cabinet)
+
+# cabinet['a-3'] = '김종국'
+# print(cabinet)
+
+# #간손님
+# del cabinet['a-3']
+# print(cabinet)
+
+# #key search
+# print(cabinet.keys())
+# print(cabinet.values())
+
+# print(cabinet.items())
+
+# #목욕탕 폐점
+# cabinet.clear()
+# print(cabinet)
+####################################
+
+#튜플###############
+#내용변경 및 추가를 할 순 없지만 속도가 빠름
+# menu = ('돈까스', "치즈까스")
+# print(menu[0])
+# print(menu[1])
+
+# # name="김종국"
+# # age = 20
+# # hobby = "코딩"
+
+# # print(name,age,hobby)
+
+# (name, age, hobby) = ("김종국", 20, "코팅")
+# print(name,age,hobby)
+
+
+####################################
+
+#집합(세트)###############
+#중복이 관리안되고 순서가 없음
+# my_set = {1,2,3,3,3}
+# print(my_set)
+
+# java={'유재석', '김태호', '양세형'}
+# python = set(['유재석', '박명수'])
+
+# #교집합 (jave와ㅣ ㅔpython을 모두 할 수 있는 사람)
+# print(java & python)
+# print(java.intersection(python))
+
+# #합집합  (java도 할 수 있거나 Python도 할 수 있는 사람 )
+# print(java | python)
+# print(java.union(python))
+
+# #차집합
+# print(java - python)
+# print(java.difference(python))
+
+# #python을 할 줄 아는 사람ㅇ ㅣ늘어남
+# python.add("김태호")
+# print(python)
+
+# #java를 까머금
+# java.remove("김태호")
+# print(java)
+
+
+
+
+####################################
+
+#자료구조의 변경###############
+menu={"커피", "우유", "주스"}
+print(menu)
