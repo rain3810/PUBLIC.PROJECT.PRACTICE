@@ -27,7 +27,13 @@
 `+@1` this() 생성자 사용 <br>
 `+@2` CanExecuteChanged 사용 필요성 <br><br><br>
 
-	
+
+>## PYTHON.APPLICATION
+    PYTHON 연습용
+    
+    ***
+    1. **practice** <br>
+    
 	
 >## WEB
     예정
