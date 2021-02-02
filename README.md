@@ -9,6 +9,7 @@
 1. **MVVMSample** <br>
 `목적` MVVM 파악 및 이해를 위한 연습<br>
 `참고` https://www.codeproject.com/Articles/1112919/MVVM-for-Beginners  <br>
+<br>
 
 
 02. **WPFCommandsDemo** <br>
@@ -20,7 +21,7 @@
  
 03. **WPFCommandsDemo2** <br>
 `목적` Command 및 ViewModel 파악 및 이해를 위한 연습<br>
-`참고` https://blog.naver.com/goldrushing/221245773946 <br><br><br>
+`참고` https://blog.naver.com/goldrushing/221245773946 <br><br>
 
 04. **WPFCommandsDemo3** <br>
 `목적` Combobox를 포함한 여러 컨트롤 간 속성 제어를 Command 및 ViewModel를 사용하여 연습<br>
