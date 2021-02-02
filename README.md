@@ -31,8 +31,10 @@
 >## PYTHON.APPLICATION
     PYTHON 연습용
     
-    ***
-    1. **practice** <br>
+ ***
+ 1. **practice** <br>
+ `목적` PYHTON의 기본 사용법 파악을 위한 연습 <br>
+ `참고` https://www.youtube.com/watch?v=kWiCuklohdY <br>
     
 	
 >## WEB
