@@ -265,12 +265,57 @@
 # #java를 까머금
 # java.remove("김태호")
 # print(java)
-
-
-
-
 ####################################
 
 #자료구조의 변경###############
-menu={"커피", "우유", "주스"}
-print(menu)
+# menu={"커피", "우유", "주스"}
+# print(menu, type(menu))
+
+# menu = list(menu)
+# print(menu, type(menu))
+
+# menu =tuple(menu)
+# print(menu, type(menu))
+
+# menu =set(menu)
+# print(menu, type(menu))
+
+####################################
+
+#퀴즈###############
+# from random import *
+# lst=[1,2,3,4,5]
+# print(lst)
+
+# shuffle(lst)
+# print(lst)
+# print(sample(lst,1))
+
+# users = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]
+
+# from random import *
+# users= list(range(1,21))
+# shuffle(users)
+# print(users)
+# chicken = sample(users, 1)
+# users = set(users) - set(chicken)
+# coffee = sample(users, 3)
+
+# print('-- 당첨자 발표 --')
+# print('치킨 당첨자 :{0}'.format( chicken[0]))
+# print('커피 당첨자 :{0}'.format(coffee ))
+
+
+# users = list(range(1,21))
+# shuffle(users)
+# print(users)
+
+# winner = sample(users, 4)
+# print('-- 당첨자 발표2 --')
+# print('치킨 당첨자 :{0}'.format(winner[0]))
+# print('커피 당첨자 :{0}'.format(winner(1:3)))
+
+####################################
+
+#IF###############
+
