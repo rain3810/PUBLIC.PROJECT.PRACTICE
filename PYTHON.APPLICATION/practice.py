@@ -659,19 +659,82 @@
 ####################################
 #다양한 출력 포맷###############
 #01 빈 자리는 빈 공간으로 두고, 오른쪽 정렬을 하되, 총 10자리  공간을 확보
-print("{0: >10}".format(500))
-print("{0: >10}".format(+500))
-print("{0: >10}".format(-500))
-#02 양수일땐 +로 음수일땐 -로 표시 (주식 예)
-print("{0: >+10}".format(500))
-print("{0: >+10}".format(-500))
-#03 왼쪽 정렬을 하고, 빈칸을 _로 채움
-print("{0:_<+10}".format(500))
-print("{0:_<+10}".format(-500))
-#04 3자리마다 콤마를 찍어주기
-print("{0:,}".format(10000000000000000))
-#05 3자리마다 콤마를 찍어주기, +-부호도 붙이기
-print('{0:+,}'.format(10000000000000000))
+# print("{0: >10}".format(500))
+# print("{0: >10}".format(+500))
+# print("{0: >10}".format(-500))
+# #02 양수일땐 +로 음수일땐 -로 표시 (주식 예)
+# print("{0: >+10}".format(500))
+# print("{0: >+10}".format(-500))
+# #03 왼쪽 정렬을 하고, 빈칸을 _로 채움
+# print("{0:_<+10}".format(500))
+# print("{0:_<+10}".format(-500))
+# #04 3자리마다 콤마를 찍어주기
+# print("{0:,}".format(10000000000000000))    
+# #05 3자리마다 콤마를 찍어주기, +-부호도 붙이기
+# print('{0:+,}'.format(10000000000000000))
+# #06 3자리마가 콤마, +-부호, ^로자릿수  확보
+# #출력포맷 순서
+# #빈값채우는CHAR,정렬방향,부호,자릿수,콤마
+# print('{0:^<+30,}'.format(10000000000000000))
+# #소수점 출력
+# print('{0:f}'.format(5/3))
+# #소수점 특정 자릿수 까지만 표시 (이후는 반올림)
+# print('{0:.2f}'.format(5/3))
+####################################
 
+#파일 입출력###############
+# score_file = open('score.txt', 'w', encoding="utf8")
+# print("수학 : 0", file=score_file)
+# print("영어 : 50", file=score_file)
+# score_file.close()
 
-print('{0:+,^>20}'.format(10000000000000000))
+# score_file = open("score.txt", "a", encoding="utf8")
+# score_file.write("과학 : 80")
+# score_file.write("\n코딩 : 100")
+# score_file.close()
+
+# score_file = open("score.txt",'r', encoding="utf8")
+# print(score_file.read())
+# score_file.close()
+
+# score_file = open("score.txt",'r', encoding="utf8")
+# print(score_file.readline(), end="") #줄별로 읽기, 한줄읽고 커서는 다음줄로 이동
+# print(score_file.readline(), end="") #줄별로 읽기, 한줄읽고 커서는 다음줄로 이동
+# print(score_file.readline()) #줄별로 읽기, 한줄읽고 커서는 다음줄로 이동
+# print(score_file.readline()) #줄별로 읽기, 한줄읽고 커서는 다음줄로 이동
+# score_file.close()
+
+# score_file = open("score.txt",'r', encoding="utf8")
+# while True:
+#     line= score_file.readline()
+#     if not line:
+#         break
+#     print(line, end="")
+
+# score_file.close()
+
+# score_file = open("score.txt",'r', encoding="utf8")
+# lines = score_file.readlines()
+
+# for line in lines:
+#     print(line, end="")
+
+# score_file.close()
+
+####################################
+
+#피클############### 
+## 피클이란, 사용하고 있는 데이터를 파일로 저장하는것, 이후 다른 사람과 주고 받아서 데이터로 활용 가능하다.
+import pickle
+# profile_file = open("profile.pickle", "wb")
+# profile = {"이름" : "박명수", "나이":30, "취미" : ["축구", "골프", "코딩"]}
+# print(profile)
+
+# pickle.dump(profile, profile_file) #profile의 정보를 file에 저장
+# profile_file.close()
+
+profile_file = open("profile.pickle", "rb")
+profile = pickle.load(profile_file) #file에 있는 정보를 profile에 불러오기
+print(profile)
+
+profile_file.close()
