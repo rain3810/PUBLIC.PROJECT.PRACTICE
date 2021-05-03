@@ -725,16 +725,222 @@
 
 #피클############### 
 ## 피클이란, 사용하고 있는 데이터를 파일로 저장하는것, 이후 다른 사람과 주고 받아서 데이터로 활용 가능하다.
-import pickle
-# profile_file = open("profile.pickle", "wb")
+# import pickle
+# profile_file = open("profile.pickle", "wb") #항상 binary 타입으로 피클을 이용해야 한다.
 # profile = {"이름" : "박명수", "나이":30, "취미" : ["축구", "골프", "코딩"]}
 # print(profile)
 
 # pickle.dump(profile, profile_file) #profile의 정보를 file에 저장
 # profile_file.close()
 
-profile_file = open("profile.pickle", "rb")
-profile = pickle.load(profile_file) #file에 있는 정보를 profile에 불러오기
-print(profile)
+# profile_file = open("profile.pickle", "rb") # 읽기(Binary 명시)
+# profile = pickle.load(profile_file) #file에 있는 정보를 profile에 불러오기
+# print(profile)
 
-profile_file.close()
+# profile_file.close()
+
+####################################
+
+#With(수월하게 파일 처리 가능)############### 
+## 피클은 파일 열고 닫는 기능이나, with는 더 확장된 기능 사용가능
+# import pickle
+
+# with open("profile.pickle", "rb") as profile_file:  #With를 쓸때는 Close 를 따로 써서 닫아줄 필요가 없다. (With 문을 탈출할때 자동으로 호출됨)
+#     print(pickle.load(profile_file))
+
+# with open ("study.txt" ,"w", encoding="utf8") as study_file:
+#     study_file.write("파이썬을 열심히 공부하고 있어요.")
+
+# with open("study.txt", "r", encoding="utf8") as study_file:
+#     print(study_file.read())
+
+####################################
+#퀴즈###############
+
+# import pickle
+
+# for week in range(1, 21):
+#     with open("{0}주차.txt".format(week), "w", encoding="utf8") as report: # 대체가능:  open(str(week) + "주차.txt", "w", encoding="utf8")
+#         report.write("- {0}주차 주간 보고 -".format(week))
+#         report.write("\n부서 :")
+#         report.write("\n이름 :")
+#         report.write("\n업무 요약 :")
+
+
+####################################
+#클래스###############
+
+# # 마린 : 공격 유닛, 군인. 총을 쏠 수 있있음
+# name = "마린"   #유닛의 이름
+# hp = 40         #유닛의 체력
+# damage = 5      #유닛의 공격력
+
+# print("{} 유닛이 생성되었습니다.".format(name))
+# print("체력 {0}, 공격력 {1}\n".format(hp, damage))
+
+# #탱크 : 공격 유닛, 탱크. 포를 쏠 수 있는데, 일반모드/시즈모드.
+# tank_name = "탱크"   #유닛의 이름
+# tank_hp = 150         #유닛의 체력
+# tank_damage = 35      #유닛의 공격력
+
+# print("{} 유닛이 생성되었습니다.".format(tank_name))
+# print("체력 {0}, 공격력 {1}\n".format(tank_hp, tank_damage))
+
+# def attack(name, location, damage):
+#     print("{0} : {1} 방향으로 적군을 공격합니다. [공격력 {2}]".format(name, location,damage))
+
+# attack(name, "1시", damage)
+# attack(tank_name, "1시", tank_damage)
+
+# class Unit:
+#     def __init__(self, name, hp, damage):
+#         self.name = name
+#         self.hp = hp
+#         self.damage = damage
+#         print("{0} 유닛이 생성되었습니다.".format(self.name))
+#         print("체력 {0}, 공격력 {1}".format(self.hp, self.damage))
+
+# marine1= Unit("마린", 40, 5)
+# marine2= Unit("마린", 40, 5)
+# tank = Unit("탱크", 150, 35)
+
+# ####################################
+# #__init__###############
+# # 파이썬에서 쓰이는 생성자임.
+# marine3= Unit("마린", 40) #오류!!
+
+####################################
+#멤버 변수###############
+#클래스 내 정의된 변수를 멤버 변수라고 한다.
+#레이스 : 공중 유닛, 비행기. 클로킹 기능이 있음(상대방에게 보이지 않음)
+
+# wraith1 = Unit('레이스', 80,5)
+# print("유닛 이름 : {0}, 공격력 : {1}".format(wraith1.name, wraith1.damage))
+
+# #마인드 컨트롤 : 상태방 유닛을 내 것으로 만드는 것 (빼앗음)
+# wraith2 = Unit("빼앗은 레이스", 80, 5)
+# wraith2.clocking = True       #파이썬은 외부에서 추가로 변수를 만들어 사용할 수 있다.
+
+# if wraith2.clocking == True :
+#     print("{0}는 현재 클로킹 상태입니다.".format(wraith2.name))
+
+####################################
+#메소드###############
+#클레스 내에서 메소드의 제일 첫번째 인자는 항상 self 여야 한다.
+
+# #공격 유닛
+# class AttackUnit:
+#     def __init__(self, name, hp, damage):
+#         self.name = name
+#         self.hp = hp
+#         self.damage = damage
+    
+#     def attack(self, location):
+#         print("{0}이 {1} 방향으로 적군을 공격 합니다. [공격력 {2}]"\
+#             .format(self.name, location, self.damage))
+
+#     def damaged(self, damage):
+#         print("{0} : {1} 데미지를 입었습니다.".format(self.name, damage))
+#         self.hp -= damage
+#         print("{0} : 현재 체력은 {1}입니다.".format(self.name, self.hp))
+
+#         if self.hp <=0 :
+#             print("{0} : 파괴되었습니다.".format(self.name))
+
+# # 파이어뱃 : 공격 유닛, 화염방사기
+# firebat1 = AttackUnit("파이어뱃", 50, 16)
+# firebat1.attack("5시")
+
+# #공격을 2번 받음
+# firebat1.damaged(25)
+# firebat1.damaged(25)
+
+####################################
+#상속###############
+
+# #메딕 : 의무병
+
+# #일반 유닛
+# class Unit:
+#     def __init__(self, name, hp):
+#         self.name = name
+#         self.hp = hp
+
+# #공격 유닛
+# class AttackUnit(Unit):
+#     def __init__(self, name, hp, damage):
+#         Unit.__init__(self, name, hp)       #부모 클래스의 생성자 호출
+#         self.damage = damage
+    
+#     def attack(self, location):
+#         print("{0}이 {1} 방향으로 적군을 공격 합니다. [공격력 {2}]"\
+#             .format(self.name, location, self.damage))
+
+#     def damaged(self, damage):
+#         print("{0} : {1} 데미지를 입었습니다.".format(self.name, damage))
+#         self.hp -= damage
+#         print("{0} : 현재 체력은 {1}입니다.".format(self.name, self.hp))
+
+#         if self.hp <=0 :
+#             print("{0} : 파괴되었습니다.".format(self.name))
+
+# # 파이어뱃 : 공격 유닛, 화염방사기
+# firebat1 = AttackUnit("파이어뱃", 50, 16)
+# firebat1.attack("5시")
+
+# #공격을 2번 받음
+# firebat1.damaged(25)
+# firebat1.damaged(25)
+
+####################################
+#다중 상속###############
+#여러곳에서 상속을 받을 수있음
+
+
+#메딕 : 의무병
+
+#일반 유닛
+class Unit:
+    def __init__(self, name, hp):
+        self.name = name
+        self.hp = hp
+
+#공격 유닛
+class AttackUnit(Unit):
+    def __init__(self, name, hp, damage):
+        Unit.__init__(self, name, hp)       #부모 클래스의 생성자 호출
+        self.damage = damage
+    
+    def attack(self, location):
+        print("{0}이 {1} 방향으로 적군을 공격 합니다. [공격력 {2}]"\
+            .format(self.name, location, self.damage))
+
+    def damaged(self, damage):
+        print("{0} : {1} 데미지를 입었습니다.".format(self.name, damage))
+        self.hp -= damage
+        print("{0} : 현재 체력은 {1}입니다.".format(self.name, self.hp))
+
+        if self.hp <=0 :
+            print("{0} : 파괴되었습니다.".format(self.name))
+
+# 드랍쉽 : 공중 유닛, 수송기. 마린/ 파이어뱃/ 탱크 등을 수송. 공격 X
+
+#날 수 있는 기능을 가진 클래스
+class Flyable:
+    def __init__(self, flying_speed):
+        self.flying_speed = flying_speed
+
+    def fly(self, name, location):
+        print("{0} : {1} 방향으로 날아갑니다. [속도 {2}]".format(name, location, self.flying_speed))
+
+#공중 공격 유닛 클래스
+class FlyableAttackUnit(AttackUnit, Flyable):
+    def __init__(self, name, hp, damage, flying_speed):
+        AttackUnit.__init__(self,name, hp, damage)
+        Flyable.__init__(self, flying_speed)
+
+#발키리 : 공중 공격 유닛, 한번에 14발 미사일 발사.
+valkyrie = FlyableAttackUnit("발키리", 200, 6, 5)
+valkyrie.fly(valkyrie.name, "3시")
+
+
