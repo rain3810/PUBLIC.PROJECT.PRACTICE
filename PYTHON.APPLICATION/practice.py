@@ -897,25 +897,259 @@
 #여러곳에서 상속을 받을 수있음
 
 
-#메딕 : 의무병
+# #메딕 : 의무병
+
+# #일반 유닛
+# class Unit:
+#     def __init__(self, name, hp):
+#         self.name = name
+#         self.hp = hp
+
+# #공격 유닛
+# class AttackUnit(Unit):
+#     def __init__(self, name, hp, damage):
+#         Unit.__init__(self, name, hp)       #부모 클래스의 생성자 호출
+#         self.damage = damage
+    
+#     def attack(self, location):
+#         print("{0}이 {1} 방향으로 적군을 공격 합니다. [공격력 {2}]"\
+#             .format(self.name, location, self.damage))
+
+#     def damaged(self, damage):
+#         print("{0} : {1} 데미지를 입었습니다.".format(self.name, damage))
+#         self.hp -= damage
+#         print("{0} : 현재 체력은 {1}입니다.".format(self.name, self.hp))
+
+#         if self.hp <=0 :
+#             print("{0} : 파괴되었습니다.".format(self.name))
+
+# # 드랍쉽 : 공중 유닛, 수송기. 마린/ 파이어뱃/ 탱크 등을 수송. 공격 X
+
+# #날 수 있는 기능을 가진 클래스
+# class Flyable:
+#     def __init__(self, flying_speed):
+#         self.flying_speed = flying_speed
+
+#     def fly(self, name, location):
+#         print("{0} : {1} 방향으로 날아갑니다. [속도 {2}]".format(name, location, self.flying_speed))
+
+# #공중 공격 유닛 클래스
+# class FlyableAttackUnit(AttackUnit, Flyable):
+#     def __init__(self, name, hp, damage, flying_speed):
+#         AttackUnit.__init__(self,name, hp, damage)
+#         Flyable.__init__(self, flying_speed)
+
+# #발키리 : 공중 공격 유닛, 한번에 14발 미사일 발사.
+# valkyrie = FlyableAttackUnit("발키리", 200, 6, 5)
+# valkyrie.fly(valkyrie.name, "3시")
+
+
+####################################
+#메소드 오버라이딩 (연산자 오버라이딩) ###############
+#부모 클래스의 메소드를 자식이 재정의
+
+# #일반 유닛
+# class Unit:
+#     def __init__(self, name, hp, speed):
+#         self.name = name
+#         self.hp = hp
+#         self.speed=speed
+
+#     def move(self, location):
+#         print("[지상 유닛 이동]")
+#         print("{0} : {1} 방향으로 이동합니다. [속도 {2}]".format(self.name, location, self.speed))
+
+# #공격 유닛
+# class AttackUnit(Unit):
+#     def __init__(self, name, hp,speed, damage ):
+#         Unit.__init__(self, name, hp, speed)       #부모 클래스의 생성자 호출
+#         self.damage = damage
+    
+#     def attack(self, location):
+#         print("{0}이 {1} 방향으로 적군을 공격 합니다. [공격력 {2}]"\
+#             .format(self.name, location, self.damage))
+
+#     def damaged(self, damage):
+#         print("{0} : {1} 데미지를 입었습니다.".format(self.name, damage))
+#         self.hp -= damage
+#         print("{0} : 현재 체력은 {1}입니다.".format(self.name, self.hp))
+
+#         if self.hp <=0 :
+#             print("{0} : 파괴되었습니다.".format(self.name))
+
+# # 드랍쉽 : 공중 유닛, 수송기. 마린/ 파이어뱃/ 탱크 등을 수송. 공격 X
+
+# #날 수 있는 기능을 가진 클래스
+# class Flyable:
+#     def __init__(self, flying_speed):
+#         self.flying_speed = flying_speed
+
+#     def fly(self, name, location):
+#         print("{0} : {1} 방향으로 날아갑니다. [속도 {2}]".format(name, location, self.flying_speed))
+
+# #공중 공격 유닛 클래스
+# class FlyableAttackUnit(AttackUnit, Flyable):
+#     def __init__(self, name, hp, damage, flying_speed):
+#         AttackUnit.__init__(self,name, hp,0, damage) #지상 Speed 0
+#         Flyable.__init__(self, flying_speed)
+    
+#     def move(self, location):
+#         print("[공중 유닛 이동]")
+#         self.fly(self.name, location)
+
+
+# #벌처 : 지상 유닛, 기동성이 좋음
+# vulture = AttackUnit("벌처", 80, 10, 20)
+
+# #배틀크루저 : 공중 유닛, 체력 굉장히 좋음, 공격력도 좋음
+# battlecruiser = FlyableAttackUnit("배틀크루저", 500, 25,3 )
+
+# vulture.move("11시")
+# battlecruiser.move("9시")
+
+####################################
+#Pass ###############
+
+# #일반 유닛
+# class Unit:
+#     def __init__(self, name, hp, speed):
+#         self.name = name
+#         self.hp = hp
+#         self.speed=speed
+
+#     def move(self, location):
+#         print("[지상 유닛 이동]")
+#         print("{0} : {1} 방향으로 이동합니다. [속도 {2}]".format(self.name, location, self.speed))
+
+# #공격 유닛
+# class AttackUnit(Unit):
+#     def __init__(self, name, hp,speed, damage ):
+#         Unit.__init__(self, name, hp, speed)       #부모 클래스의 생성자 호출
+#         self.damage = damage
+    
+#     def attack(self, location):
+#         print("{0}이 {1} 방향으로 적군을 공격 합니다. [공격력 {2}]"\
+#             .format(self.name, location, self.damage))
+
+#     def damaged(self, damage):
+#         print("{0} : {1} 데미지를 입었습니다.".format(self.name, damage))
+#         self.hp -= damage
+#         print("{0} : 현재 체력은 {1}입니다.".format(self.name, self.hp))
+
+#         if self.hp <=0 :
+#             print("{0} : 파괴되었습니다.".format(self.name))
+
+# #날 수 있는 기능을 가진 클래스
+# class Flyable:
+#     def __init__(self, flying_speed):
+#         self.flying_speed = flying_speed
+
+#     def fly(self, name, location):
+#         print("{0} : {1} 방향으로 날아갑니다. [속도 {2}]".format(name, location, self.flying_speed))
+
+# #공중 공격 유닛 클래스
+# class FlyableAttackUnit(AttackUnit, Flyable):
+#     def __init__(self, name, hp, damage, flying_speed):
+#         AttackUnit.__init__(self,name, hp,0, damage) #지상 Speed 0
+#         Flyable.__init__(self, flying_speed)
+    
+#     def move(self, location):
+#         print("[공중 유닛 이동]")
+#         self.fly(self.name, location)
+
+# #건물
+# class BuildingUnit(Unit):
+#     def __init__(self, name, hp, location):
+#         pass #그냥 일단은 넘어간다는 뜻
+
+# #서플라이 디폿 : 건물, 1개 건물 당 8개 유닛을 생성할 수 있따.
+# supply_depot = BuildingUnit("서플라이 디폿", 500, "7시")
+
+
+# def game_start():
+#     print("[알림] 새로운 게임을 시작합니다.")
+
+# def game_over():
+#     pass
+
+# game_start()
+# game_over()
+
+####################################
+#super ###############
+
+# #일반 유닛
+# class Unit:
+#     def __init__(self, name, hp, speed):
+#         self.name = name
+#         self.hp = hp
+#         self.speed=speed
+
+#     def move(self, location):
+#         print("[지상 유닛 이동]")
+#         print("{0} : {1} 방향으로 이동합니다. [속도 {2}]".format(self.name, location, self.speed))
+
+# #공격 유닛
+# class AttackUnit(Unit):
+#     def __init__(self, name, hp,speed, damage ):
+#         Unit.__init__(self, name, hp, speed)       #부모 클래스의 생성자 호출
+#         self.damage = damage
+    
+#     def attack(self, location):
+#         print("{0}이 {1} 방향으로 적군을 공격 합니다. [공격력 {2}]"\
+#             .format(self.name, location, self.damage))
+
+#     def damaged(self, damage):
+#         print("{0} : {1} 데미지를 입었습니다.".format(self.name, damage))
+#         self.hp -= damage
+#         print("{0} : 현재 체력은 {1}입니다.".format(self.name, self.hp))
+
+#         if self.hp <=0 :
+#             print("{0} : 파괴되었습니다.".format(self.name))
+
+# #날 수 있는 기능을 가진 클래스
+# class Flyable:
+#     def __init__(self, flying_speed):
+#         self.flying_speed = flying_speed
+
+#     def fly(self, name, location):
+#         print("{0} : {1} 방향으로 날아갑니다. [속도 {2}]".format(name, location, self.flying_speed))
+
+# #공중 공격 유닛 클래스
+# class FlyableAttackUnit(AttackUnit, Flyable):
+#     def __init__(self, name, hp, damage, flying_speed):
+#         AttackUnit.__init__(self,name, hp,0, damage) #지상 Speed 0
+#         Flyable.__init__(self, flying_speed)
+    
+#     def move(self, location):
+#         print("[공중 유닛 이동]")
+#         self.fly(self.name, location)
+
+# #건물
+# class BuildingUnit(Unit):
+#     def __init__(self, name, hp, location):
+#         # Unit.__init__(self, name, hp,0)
+#         super().__init__(name, hp, 0)  # = Unit.__init__(self, name, hp,0)
+#         self.location = location
+
+##파일 Practice_class.py 참고하여 부모클래스의 생성자 호출법 확인하기
+
+####################################
+#스타크래프트 프로젝트 전반전+ 후반전 ###############
 
 #일반 유닛
 class Unit:
-    def __init__(self, name, hp):
+    def __init__(self, name, hp, speed):
         self.name = name
         self.hp = hp
+        self.speed=speed
+        print("{0} 유닛이 생성되었습니다.".format(name))
 
-#공격 유닛
-class AttackUnit(Unit):
-    def __init__(self, name, hp, damage):
-        Unit.__init__(self, name, hp)       #부모 클래스의 생성자 호출
-        self.damage = damage
-    
-    def attack(self, location):
-        print("{0}이 {1} 방향으로 적군을 공격 합니다. [공격력 {2}]"\
-            .format(self.name, location, self.damage))
+    def move(self, location):
+        print("[지상 유닛 이동]")
+        print("{0} : {1} 방향으로 이동합니다. [속도 {2}]".format(self.name, location, self.speed))
 
-    def damaged(self, damage):
+   def damaged(self, damage):
         print("{0} : {1} 데미지를 입었습니다.".format(self.name, damage))
         self.hp -= damage
         print("{0} : 현재 체력은 {1}입니다.".format(self.name, self.hp))
@@ -923,7 +1157,52 @@ class AttackUnit(Unit):
         if self.hp <=0 :
             print("{0} : 파괴되었습니다.".format(self.name))
 
-# 드랍쉽 : 공중 유닛, 수송기. 마린/ 파이어뱃/ 탱크 등을 수송. 공격 X
+#공격 유닛
+class AttackUnit(Unit):
+    def __init__(self, name, hp,speed, damage ):
+        Unit.__init__(self, name, hp, speed)       #부모 클래스의 생성자 호출
+        self.damage = damage
+    
+    def attack(self, location):
+        print("{0}이 {1} 방향으로 적군을 공격 합니다. [공격력 {2}]"\
+            .format(self.name, location, self.damage))
+
+#마린
+class Marine(AttackUnit):
+    def __init__(self):
+        AttackUnit.__init__(self, "마린", 40, 1,5)
+    
+    #스팀팩 : 일정 시간 동안 이동 및 공격 속도를 증가, 자기 체력 10 감소
+    def stimpack(self):
+        if self.hp >10:
+            self.hp -= 10
+            print("{0} : 스팀팩을 사용합니다. (HP 10 감소)".format(self.name))
+        else:
+            print("{0} : 체력이 부족하여 스팀팩을 사용하지 않습니다.".format(self.name))
+     
+#탱크
+class Tank(AttackUnit):
+    #시즈모드 : 탱크를 지상에 고정시켜, 더 높은 파워로 공격 가능. 이동은 불가.
+    seize_developed =False #시즈모드 개발 여부
+
+    def __init__(self):
+        AttackUnit.__init__(self, "탱크", 150,1, 35)
+        self.seize_mdoe = False
+
+    def set_seize_mdoe(self):
+        if Tank.seize_developed ==False:
+            return
+
+        #현재 시즈모드가 아닐 때 -> 시즈 모드
+        if self.seize_mdoe == False:
+            print("{0} : 시즈모드로 전환합니다.".format(self.name))
+            self.damage *=2
+            self.seize_mdoe = True
+        #현재 시즈모드 일떄 -> 시즈 모드 해제
+        else :
+            print("{0} : 시즈모드를 해제합니다.".format(self.name))
+            self.damage /=2
+            self.seize_mdoe = False
 
 #날 수 있는 기능을 가진 클래스
 class Flyable:
@@ -936,11 +1215,24 @@ class Flyable:
 #공중 공격 유닛 클래스
 class FlyableAttackUnit(AttackUnit, Flyable):
     def __init__(self, name, hp, damage, flying_speed):
-        AttackUnit.__init__(self,name, hp, damage)
+        AttackUnit.__init__(self,name, hp,0, damage) #지상 Speed 0
         Flyable.__init__(self, flying_speed)
+    
+    def move(self, location):
+        print("[공중 유닛 이동]")
+        self.fly(self.name, location)
 
-#발키리 : 공중 공격 유닛, 한번에 14발 미사일 발사.
-valkyrie = FlyableAttackUnit("발키리", 200, 6, 5)
-valkyrie.fly(valkyrie.name, "3시")
+#레이스
+class Wraith(FlyableAttackUnit):
+    def __init__(self):
+        FlyableAttackUnit.__init__("레이스", 80, 20 ,5)
+        self.clocked = False #클로킹 모드 (해제 상태)
 
+    def clocking(self):
+        if self.clocked == True: #클로킹 모드 -> 모드 해제
+            print("{0} : 클로킹 모드 해제합니다.".format(self.name))
+            self.clocked=False
+        else :  #클로킹 모드 아닐떄 => 모드 설정
+            print("{0} : 클로킹 모드 설정합니다.".format(self.name))
+            self.clocked=True
 
