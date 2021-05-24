@@ -10,6 +10,10 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.0" />
+<<<<<<< HEAD
+=======
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.0" />
+>>>>>>> parent of d349312 ([EDIT] 프로젝트 삭제)
   </ItemGroup>
 
   <ItemGroup>
