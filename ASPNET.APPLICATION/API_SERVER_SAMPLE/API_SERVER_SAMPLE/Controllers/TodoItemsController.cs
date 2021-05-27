@@ -10,7 +10,7 @@ using API_SERVER_SAMPLE.Models;
 namespace API_SERVER_SAMPLE.Controllers
 {
     [Route("api/[controller]")]
-    [ApiController]
+    [ApiController]     //컨트롤러가 웹 API 요청에 응답함을 나타냄
     public class TodoItemsController : ControllerBase
     {
         private readonly TodoContext _context;
@@ -80,7 +80,10 @@ namespace API_SERVER_SAMPLE.Controllers
             _context.TodoItems.Add(todoItem);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetTodoItem", new { id = todoItem.Id }, todoItem);
+            /*CreatedAtAction
+             * 
+             */
+            return CreatedAtAction(nameof(GetTodoItem), new { id = todoItem.Id }, todoItem);
         }
 
         // DELETE: api/TodoItems/5
