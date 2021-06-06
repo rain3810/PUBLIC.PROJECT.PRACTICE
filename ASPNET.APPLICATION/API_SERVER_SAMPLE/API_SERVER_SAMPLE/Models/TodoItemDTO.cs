@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace API_SERVER_SAMPLE.Models
 {
-    public class TodoItem
+    public class TodoItemDTO
     {
         /// <summary>
         /// 고유키
@@ -14,6 +14,5 @@ namespace API_SERVER_SAMPLE.Models
         public string Name { get; set; }
         public bool IsComplete { get; set; }
 
-        public string Secret { get; set; }
     }
 }
