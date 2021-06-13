@@ -1182,6 +1182,7 @@ class Marine(AttackUnit):
      
 #탱크
 class Tank(AttackUnit):
+    
     #시즈모드 : 탱크를 지상에 고정시켜, 더 높은 파워로 공격 가능. 이동은 불가.
     seize_developed =False #시즈모드 개발 여부
 
