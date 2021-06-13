@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace API_SERVER_SAMPLE.Models
+namespace API_SERVER_SAMPLE.Models.Coupang
 {
-    public class SubmitOutbound
+    public class ItemValidation
     {
         public string labelerId { get; set; }
         public string shipmentId { get; set; }

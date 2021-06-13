@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace API_SERVER_SAMPLE.Models.Coupang
 {
-    public class SubmitOutbound_Response
+    public class Validation_Response
     {
         public string shipmentId { get; set; }
         public string reasonCode { get; set; }
