@@ -1,0 +1,34 @@
+﻿<Window x:Class="WpfMSSQLTest3.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfMSSQLTest3"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Button x:Name="buttin" Content="DB Connect" HorizontalAlignment="Left" VerticalAlignment="Top" Height="104" Width="172" Click="buttin_Click"/>
+        <ListView x:Name="lstView" Margin="10,134,0,106">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <WrapPanel>
+                        <TextBox Text="PC_NO : "/>
+                        <TextBox Text="{Binding Pc_no}" FontWeight="Bold"/>
+                        <TextBox Text="PI_NO : "/>
+                        <TextBox Text="{Binding Pi_no}" FontWeight="Bold"/>
+                        <TextBox Text="PICK_NO : "/>
+                        <TextBox Text="{Binding Pick_no}" FontWeight="Bold"/>
+                        <TextBox Text="PI_LOG_DATA : "/>
+                        <TextBox Text="{Binding Pi_log_data}" FontWeight="Bold"/>
+                    </WrapPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            <!--<ListView.View>
+                <GridView>
+                    <GridViewColumn/>
+                </GridView>
+            </ListView.View>-->
+        </ListView>
+        <Button x:Name="buttin2" Content="Get Data"  Height="34" Click="buttin2_Click" Margin="258,368,342,0"/>
+    </Grid>
+</Window>
