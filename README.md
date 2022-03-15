@@ -24,7 +24,13 @@
 `목적` Combobox를 포함한 여러 컨트롤 간 속성 제어를 Command 및 ViewModel를 사용하여 연습<br>
 `참고` https://blog.naver.com/goldrushing/221245862378 <br>
 `+@1` this() 생성자 사용 <br>
-`+@2` CanExecuteChanged 사용 필요성 <br><br><br>
+`+@2` CanExecuteChanged 사용 필요성 <br>
+
+4. **PI_LIGHT** <br>
+`목적` BCU PI를 대체하기 위한 프로그램을 만들기 위해 WPF 기본 기능 연습<br>
+`참고` https://www.youtube.com/watch?v=MGOb9QXi6So&list=PLxU-iZCqT52Cmj47aKB1T-SxI33YL7rYS&index=5 <br><br><br>
+
+
 
 * * *
 >## PYTHON.APPLICATION

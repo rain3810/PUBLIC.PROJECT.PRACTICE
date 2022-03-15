@@ -33,11 +33,11 @@ namespace API_SERVER_SAMPLE.Controllers.Coupang
 
         }
 
-        [HttpPost]
-        public string Post([FromBody] string value)
-        {
-            return "POST";
-        }
+        //[HttpPost]
+        //public ActionResult<string> Post([FromBody] string value)
+        //{
+        //    return "POST";
+        //}
 
         // PUT api/<ValuesController>/5
         [HttpPut("{id}")]
