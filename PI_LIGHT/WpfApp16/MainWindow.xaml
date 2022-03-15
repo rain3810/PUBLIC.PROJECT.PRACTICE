@@ -27,7 +27,7 @@
     <Window.Resources>
         <Style x:Key="MyStyle">
             <Setter Property="Control.Foreground" Value="Red"/>
-            <Setter Property="TextBlock.Text" Value="Hello WPF"/>
+            <Setter Property="TextBlock.Text" Value="Hello WPF."/>
         </Style>
     </Window.Resources>
 </Window>

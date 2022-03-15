@@ -23,7 +23,7 @@ namespace WpfApp16
         public MainWindow()
         {
             InitializeComponent();
-            
+            //한번 변경
         }
     }
 }
