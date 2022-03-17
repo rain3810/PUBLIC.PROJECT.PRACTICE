@@ -12,7 +12,7 @@ namespace WpfApp5
     {
         [STAThread]
         public static void Main()
-        {
+       {
             MyMain app = new MyMain();
             app.Run();
         }

@@ -4,11 +4,12 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp20"
-        x:Class="WpfApp20.MainWindow"
+        x:Class="WpfApp20.DataTrigger"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="DataTrigger" Height="450" Width="800">
     <Window.Resources>
-        <Style TargetType="TextBlock" ><!--x:Key="MyStyle"-->
+        <Style TargetType="TextBlock" >
+            <!--x:Key="MyStyle"-->
             <Setter Property="Visibility" Value="Visible"/>
             <Style.Triggers>
                 <DataTrigger Binding="{Binding IsChecked, ElementName=cb1}" Value="True" >
@@ -16,14 +17,21 @@
                 </DataTrigger>
             </Style.Triggers>
         </Style>
+        
+        
     </Window.Resources>
     <Grid>
 
-        <StackPanel>
+        <StackPanel Margin="0,0,693,384">
             <CheckBox x:Name="cb1" Content="CheckBox"/>
             <TextBlock Text="Hello WPF!" FontSize="20" />
             <!--Style="{Binding Mode=OneWay, Source={StaticResource MyStyle}}"/>-->
-        </StackPanel>
+        </StackPanel> 
+        <Slider Margin="54,55,81,320"/>
+        <ProgressBar Margin="54,85,82,276"/>
+        <TextBox Text="TextBox" TextWrapping="Wrap" Margin="54,165,460,217"/>
+
+
 
     </Grid>
 </Window>
