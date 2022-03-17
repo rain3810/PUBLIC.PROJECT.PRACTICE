@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace WpfApp16
+namespace WpfApp18
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -23,10 +23,6 @@ namespace WpfApp16
         public MainWindow()
         {
             InitializeComponent();
-            //한번 변경
-            Style a = new Style();
-            
-        
         }
     }
 }

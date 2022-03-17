@@ -6,6 +6,18 @@
         xmlns:local="clr-namespace:WpfApp16"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+        <Style x:Key="MyStyle">
+            <Setter Property="Control.Foreground" Value="Red"/>
+            <Setter Property="TextBlock.Text" Value="Hello WPF."/>
+            <Style.Triggers>
+                <Trigger Property="Control.IsMouseOver" Value="True">
+                    <Setter Property="Control.Foreground" Value="Blue"/>
+                    <Setter Property="TextBlock.Text" Value="버튼으로 진입하였습니다."/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
     <Grid>
         <TextBlock x:Name="tblk1" TextWrapping="Wrap" Text="Hello, WPF World!" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" FontSize="16" Margin="10,10,0,0" >
             <TextBlock.Style>
@@ -21,13 +33,15 @@
 
             </TextBlock.Style>
         </TextBlock>
-        
+
+
+        <StackPanel Margin="0,60,0,0">
+            <Button  Content="trigger" Style="{Binding Mode=OneWay, Source={StaticResource MyStyle}}" Height="106" Width="226"/>
+            <TextBlock TextWrapping="Wrap" Style="{Binding Mode=OneWay, Source={StaticResource MyStyle}}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30"/>
+
+        </StackPanel>
     </Grid>
 
-    <Window.Resources>
-        <Style x:Key="MyStyle">
-            <Setter Property="Control.Foreground" Value="Red"/>
-            <Setter Property="TextBlock.Text" Value="Hello WPF."/>
-        </Style>
-    </Window.Resources>
+
+
 </Window>
