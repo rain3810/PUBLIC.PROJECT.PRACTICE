@@ -13,17 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace WpfApp20
+namespace WpfApp22.ListboxBinding
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class DataTrigger : Window
+    public partial class MainWindow : Window
     {
-        public DataTrigger()
+        public MainWindow()
         {
             InitializeComponent();
-            this.DataContext = new DataObject();
         }
     }
 }

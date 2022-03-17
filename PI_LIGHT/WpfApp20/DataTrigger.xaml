@@ -17,8 +17,15 @@
                 </DataTrigger>
             </Style.Triggers>
         </Style>
-        
-        
+
+        <Style TargetType="ProgressBar">
+            <Setter Property="Foreground" Value="Blue"/>
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding TheValue}" Value="10" >
+                    <Setter Property="Foreground" Value="Red"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
     </Window.Resources>
     <Grid>
 
@@ -26,12 +33,11 @@
             <CheckBox x:Name="cb1" Content="CheckBox"/>
             <TextBlock Text="Hello WPF!" FontSize="20" />
             <!--Style="{Binding Mode=OneWay, Source={StaticResource MyStyle}}"/>-->
-        </StackPanel> 
-        <Slider Margin="54,55,81,320"/>
-        <ProgressBar Margin="54,85,82,276"/>
-        <TextBox Text="TextBox" TextWrapping="Wrap" Margin="54,165,460,217"/>
+        </StackPanel>
 
 
-
+        <Slider x:Name="slider" Margin="54,55,81,320" Value="{Binding TheValue}"/>
+        <ProgressBar x:Name="progBar" Margin="54,85,82,276" Value="{Binding TheValue}" Maximum="10"/>
+        <TextBox TextWrapping="Wrap" Margin="54,165,460,217" Text="{Binding TheValue}"/>
     </Grid>
 </Window>
