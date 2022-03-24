@@ -1,12 +1,20 @@
-﻿<Window x:Class="WpfApp23.DependencyProperty.MainWindow"
+﻿<Window x:Class="WpfApp23.DependencyPropertyTest.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WpfApp23.DependencyProperty"
+        xmlns:local="clr-namespace:WpfApp23.DependencyPropertyTest"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="MainWindow" Height="450" Width="800" WindowStartupLocation="CenterOwner">
+    <Window.ContextMenu>
+        <ContextMenu MenuItem.Click="ContextMenu_Click">
+            <MenuItem Header="YELLOW"/>
+            <MenuItem Header="GREEN"/>
+            <MenuItem Header="BLUE"/>
+        </ContextMenu>
+    </Window.ContextMenu>
+    <TextBox x:Name="txtColorName" Text="TextBox" TextWrapping="Wrap" Width="120" Margin="340,0,340,354" RenderTransformOrigin="0.492,2.874"/>
 
-    </Grid>
+
+
 </Window>

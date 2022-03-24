@@ -15,7 +15,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WpfApp20", "WpfApp20\WpfApp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WpfApp22.ListboxBinding", "WpfApp22.ListboxBinding\WpfApp22.ListboxBinding.csproj", "{4EFD003E-DD1C-47FB-8864-D7E2C09BC26A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfApp23.DependencyProperty", "WpfApp23.DependencyProperty\WpfApp23.DependencyProperty.csproj", "{43B66E87-DEAC-4130-893C-8311E69ACD00}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WpfApp23.DependencyPropertyTest", "WpfApp23.DependencyProperty\WpfApp23.DependencyPropertyTest.csproj", "{43B66E87-DEAC-4130-893C-8311E69ACD00}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
