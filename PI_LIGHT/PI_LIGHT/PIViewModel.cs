@@ -13,7 +13,7 @@ namespace PI_LIGHT
         public string PI_NO { get; set; }
         public string PI_STATUS { get; set; }
 
-        public SolidColorBrush PI_COLOR { get { return (PI_STATUS == "ON") ? Brushes.Red : Brushes.Black; } }
+        //public SolidColorBrush PI_COLOR { get { return (PI_STATUS == "ON") ? Brushes.Red : Brushes.Black; } }
 
         public override string ToString()
         {

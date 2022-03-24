@@ -8,12 +8,24 @@
         Title="MainWindow" Height="450" Width="800" Loaded="window_Loaded">
     <Window.Resources>
 
+        <Style TargetType="Button">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding Path=PI_STATUS}" Value="Y">
+                    <Setter Property="Background" Value="Red"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding Path=PI_STATUS}" Value="N">
+                    <Setter Property="Background" Value="Yellow"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
         <local:PIList x:Key="piList"/>
         <DataTemplate x:Key="piDataTemplete">
             <Border BorderBrush="Black" BorderThickness="1">
                 <TextBlock FontWeight="Bold" FontSize="16">
                 <Label Content="{Binding PI_NO}"/>
-                <Button Content="{Binding PI_STATUS}" Width="50" Background="{Binding PI_COLOR, Mode=OneWay}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                <Button Content="{Binding PI_STATUS}" Width="50" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+
                 </TextBlock>
             </Border>
         </DataTemplate>

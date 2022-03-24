@@ -34,7 +34,7 @@ namespace PI_LIGHT
         {
             try
             {
-                
+
 
 
 
@@ -59,7 +59,9 @@ namespace PI_LIGHT
                 sqlCon = new SqlConnection(string.Format("Persist Security Info=False;User ID=sa;Password=tsvr2201@pts;Initial Catalog=GNFOOD_BCU;Server=168.126.28.28,9005"));
                 sqlCon.Open();
 
-                SqlCommand com = new SqlCommand(@"select * from lt_pi_loc (nolock)
+                SqlCommand com = new SqlCommand(@"select wh_code, pi_kind, bcu_no, pc_no, pi_no, loc_code, pi_log_data
+                                                , case when pi_no %4 =1  then 'Y' else 'N' end AS PI_STATUS
+                                                    from lt_pi_loc (nolock)
                                                     where pc_no = 1
                                                     order by loc_code", sqlCon);
 
@@ -68,10 +70,11 @@ namespace PI_LIGHT
 
                 while (sqlRd.Read())
                 {
-                    piList.Add(new PIViewModel() { PI_NO = sqlRd["loc_code"].ToString(), PI_STATUS = "OFF" });
+                    piList.Add(new PIViewModel() { PI_NO = sqlRd["loc_code"].ToString(), PI_STATUS = sqlRd["PI_STATUS"].ToString() });
 
                 }
 
+                this.DataContext = piList;
                 //MessageBox.Show(result);
             }
             catch (Exception ex)
