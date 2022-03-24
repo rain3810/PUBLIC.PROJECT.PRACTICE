@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Window.Resources>
-        <local:Pies x:Key="pies"/>
+        <!--<local:Pies x:Key="Designpies"/>-->
 
         <DataTemplate x:Key="MyTemplate">
             <Border x:Name="border">
@@ -18,9 +18,9 @@
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
 
-                    <TextBox HorizontalAlignment="Stretch" Text="{Binding zoneType}"/>
-                    <TextBox HorizontalAlignment="Stretch" Text="{Binding LogCode}" Grid.Column="1"/>
-                    <TextBox HorizontalAlignment="Stretch" Grid.Column="2" Text="{Binding statusType}"/>
+                    <TextBlock HorizontalAlignment="Stretch" Text="{Binding ZoneType}"/>
+                    <TextBlock HorizontalAlignment="Stretch" Text="{Binding LogCode}" Grid.Column="1"/>
+                    <TextBlock HorizontalAlignment="Stretch" Grid.Column="2" Text="{Binding StatusType}"/>
                 </Grid>
             </Border>
         </DataTemplate>
@@ -38,15 +38,14 @@
     </Window.Resources>
     <StackPanel>
         <Button x:Name="Add" Click="Add_Click" Content="PI추가"/>
-        <TextBlock Text="ZONE을 선택하세요." Height="23" Width="176"/>
-        <ListBox x:Name="myListbox" Height="61" SelectionChanged="myListbox_SelectionChanged" Width="378" SelectedIndex="0">
+        <ListBox x:Name="myListbox" Height="89" SelectionChanged="myListbox_SelectionChanged" Width="378" SelectedIndex="0">
             <ListBoxItem Content="A"/>
             <ListBoxItem Content="B"/>
             <ListBoxItem Content="C"/>
         </ListBox>
         <TextBlock Text="PI 리스트" Height="23" Width="176"/>
         <ListBox x:Name="myListBox2" Height="278" Width="408" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" 
-                 SelectionChanged="myListBox2_SelectionChanged" ItemTemplate="{DynamicResource MyTemplate}"/>
+                 SelectionChanged="myListBox2_SelectionChanged" ItemsSource="{Binding}"  ItemTemplate="{DynamicResource MyTemplate}"/>
 
 
     </StackPanel>

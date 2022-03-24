@@ -7,6 +7,16 @@
         mc:Ignorable="d"
         Title="SubWindow" Height="450" Width="800">
     <Grid>
-        
+        <Label Content="위치 추가" HorizontalAlignment="Left" Margin="270,30,0,0" VerticalAlignment="Top" Width="243" FontWeight="Bold" FontSize="20"/>
+        <Label Content="LOC CODE" HorizontalAlignment="Left" Margin="43,71,0,0" VerticalAlignment="Top" Width="116" FontWeight="Bold" FontSize="20"/>
+        <TextBox x:Name="txtLocCode" TextWrapping="Wrap" Margin="184,67,42,296" FontSize="20" Background="#FFEEE8E8"/>
+        <Label Content="ZONE 지정" HorizontalAlignment="Left" Margin="43,241,0,0" VerticalAlignment="Top" Width="116" FontWeight="Bold" FontSize="20"/>
+        <RadioButton x:Name="rdoAZone" Content="A ZONE" HorizontalAlignment="Left" Margin="223,240,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="20"/>
+        <RadioButton x:Name="rdoBZone" Content="B ZONE" HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Bold" FontSize="20" Margin="0,240,0,0"/>
+        <RadioButton x:Name="rdoCZone" Content="C ZONE" HorizontalAlignment="Left" Margin="502,240,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="20"/>
+        <Button Content="저장" HorizontalAlignment="Center" Margin="0,333,0,0" VerticalAlignment="Top" Height="63" Width="160" Click="Button_Click"/>
+        <Label Content="PI NO" HorizontalAlignment="Left" Margin="43,159,0,0" VerticalAlignment="Top" Width="116" FontWeight="Bold" FontSize="20"/>
+        <TextBox x:Name="txtPINO" TextWrapping="Wrap" Margin="184,164,42,199" FontSize="20" Background="#FFF0E6E6"/>
+
     </Grid>
 </Window>

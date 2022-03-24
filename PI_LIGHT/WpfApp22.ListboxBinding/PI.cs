@@ -9,18 +9,20 @@ namespace WpfApp22.ListboxBinding
 {
     public class PI
     {
+
         public enum ZONEType
         {
             A,
             B,
             C
         }
-
         public enum STATUSType
         {
             ON,
             OFF,
         }
+
+
 
         string bcuNo;
         string pcNo;
@@ -35,8 +37,8 @@ namespace WpfApp22.ListboxBinding
         public string LogCode { get => logCode; set => logCode = value; }
 
 
-        internal ZONEType ZoneType { get => zoneType; set => zoneType = value; }
-        internal STATUSType StatusType { get => statusType; set => statusType = value; }
+        public  ZONEType ZoneType { get => zoneType; set => zoneType = value; }
+        public STATUSType StatusType { get => statusType; set => statusType = value; }
 
 
         public PI() { }
