@@ -24,8 +24,6 @@
                 <TextBlock FontWeight="Bold" FontSize="16">
                 <Label Content="{Binding PI_NO}"/>
                 <Button Content="{Binding PI_STATUS}" Width="50" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
-
-
                 </TextBlock>
             </Border>
         </DataTemplate>
