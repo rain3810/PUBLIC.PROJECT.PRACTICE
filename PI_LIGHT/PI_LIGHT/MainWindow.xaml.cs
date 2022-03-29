@@ -122,7 +122,7 @@ namespace PI_LIGHT
 
                 while (sqlRd.Read())
                 {
-                    piList.Add(new PIViewModel() { PI_NO = sqlRd["loc_code"].ToString(), SEND_YN = sqlRd["send_yn"].ToString(), PICK_NO = sqlRd["pick_no"].ToString() });
+                    piList.Add(new PIViewModel() { LOC_CODE = sqlRd["loc_code"].ToString(), CNT = "0", PI_NO = sqlRd["pi_no"].ToString(), SEND_YN = sqlRd["send_yn"].ToString(), LAMPOn = false });
 
                 }
 
@@ -218,147 +218,16 @@ namespace PI_LIGHT
 
                         BCUInfo logInfo = new BCUInfo(row["pi_log_data"].ToString(), "seq_non");
 
-                        //@F와 같이 일괄 적용 건은 ack가 아닌, bcu정보가 응답값으로 오므로, 
-                        if (logInfo.LogType == "TYPE3")
-                        {
-                            BCUHelper.Instance.FnPILogUpdate(row["pi_no"].ToString(), "N", null, (row["auto_yn"].ToString() == "Y") ? "Y" : "T", UICommon.ConfigHelper.Instance.BCUPCNo);
-                            this.WorkMessageAdd(string.Format("[SEND 완료] : [pick-{0}] {1}", row["pick_no"].ToString(), row["pi_log_data"].ToString()));
-                            Thread.Sleep(100);
+                        PIViewModel onPi = piList.First(pi => pi.PI_NO == logInfo.PI_No);
+                        if (onPi == null)
                             continue;
-                        }
 
-                        //2020.01.14 김윤화 추가 - PI 점등 건에 대해서도 응답값 보도록 추가
-                        string recvString = string.Empty;
+                        onPi.LAMPOn = (logInfo.PI_LampAttribute == 64) ? false : true;
+                        onPi.CNT = logInfo.Send_Data.Replace(" ", "");
 
-                        for (int j = 0; j < 20; j++)
-                        {
-                            Thread.Sleep(10);
-                            Application.DoEvents();
+                        strQuery = string.Format(@"update lt_pi_loc set send_yn = '{1}', upd_date = getdate() where pi_no ='{0}' and send_yn ='N'", logInfo.PI_No, (row["auto_yn"].ToString() == "Y") ? "Y" : "T");
+                        piNewRow = this.FnPILogSelect(strQuery);      //PI에서 저장된 새로운 ROW 체크
 
-                            if (ZDeviceManager.Instance.BCU_71.CurrentReceiveData == "")
-                                continue;
-                            recvString = ZDeviceManager.Instance.BCU_71.CurrentReceiveData;
-                            ZDeviceManager.Instance.BCU_71.CurrentReceiveData = "";
-                            break;
-                        }
-
-
-                        if (string.IsNullOrEmpty(recvString.Trim())) continue;
-                        if (recvString.Length < 5) continue;
-                        try
-                        {
-                            string sFunctionCode = recvString.Substring(0, 1);
-                            string sRtnBCU = recvString.Substring(1, 2);
-                            string sRtnPI = recvString.Substring(3, 2);
-
-                            if (sFunctionCode != ((char)Const.cbAck).ToString())
-                                continue;
-
-                            if (String.Format("{0:X2}", int.Parse(row["pi_no"].ToString())) == sRtnPI)
-                            {
-                                BCUHelper.Instance.FnPILogUpdate(row["pi_no"].ToString(), "N", null, (row["auto_yn"].ToString() == "Y") ? "Y" : "T", UICommon.ConfigHelper.Instance.BCUPCNo, recvString);
-                                this.WorkMessageAdd(string.Format("[SEND 완료] : [pick-{0}] {1}", row["pick_no"].ToString(), row["pi_log_data"].ToString()));
-                            }
-                            else
-                            {
-                                FuncEx._WriteErrorLog("tmBCU_Tick", string.Format("[SEND 다른Return] 점등PI:{0}/ReturnPI:{1} ({2})", String.Format("{0:X2}", int.Parse(row["pi_no"].ToString())), sRtnPI, recvString));
-                            }
-                        }
-                        catch (Exception ex)
-                        {
-                            FuncEx._WriteErrorLog("tmBCU_Tick", string.Format("[SEND EXP]  점등PI:{0}/ReturnValue:{1}/ex:{2} ", String.Format("{0:X2}", int.Parse(row["pi_no"].ToString())), recvString, ex.ToString()));
-                            continue;
-                        }
-                        //2020.01.14 김윤화 추가 - PI 점등 건에 대해서도 응답값 보도록 추가
-                    }
-
-
-                    //BCU로 읽을 데이터 확인
-                    //PI의 현재 상태가 필요한 데이터 (T)
-                    DataTable piRequestRow = BCUHelper.Instance.FnPILogSelect(112, null, "T", "N", UICommon.ConfigHelper.Instance.BCUNo);
-
-                    foreach (DataRow row in piRequestRow.Rows)
-                    {
-                        Thread.Sleep(50);
-                        BCUInfo requestInfo = new BCUInfo(row["pi_log_data"].ToString(), "seq_non");
-                        byte[] responseByte;
-
-                        byte[] readByte = BCUHelper.Instance.FnConvertRequestData(requestInfo.BCU_ID, requestInfo.PI_No, "R", out responseByte);
-
-                        log += string.Format("[{0} 요청]-{1} (PI:{2})\r\n", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss:fff"), BitConverter.ToString(readByte), row["pi_log_data"].ToString());
-
-                        ZDeviceManager.Instance.BCU_71.CurrentReceiveData = string.Empty;
-                        ZDeviceManager.Instance.BCU_71.Send(readByte, 0, readByte.Length);
-
-                        string recvString = string.Empty;
-
-                        for (int j = 0; j < 20; j++)
-                        {
-                            Thread.Sleep(10);
-                            Application.DoEvents();
-
-                            if (ZDeviceManager.Instance.BCU_71.CurrentReceiveData == "")
-                                continue;
-                            recvString = ZDeviceManager.Instance.BCU_71.CurrentReceiveData;
-                            ZDeviceManager.Instance.BCU_71.CurrentReceiveData = "";
-                            break;
-                        }
-
-                        if (string.IsNullOrEmpty(recvString.Trim())) continue;
-
-                        //FuncEx._WriteErrorLog("4", recvString);
-
-                        try
-                        {
-                            //2018.11.09 김윤화 추가 - 응답 신호 중, DAS의 풀박스를 의미하는 신호("8      ")가 오는 경우는 Skip 하도록 수정
-                            if (recvString.StxAndEtxRemove().Length <= 6) continue;     //값 없이 오는 무의미한 값은 Skpi 하도록 수정
-                            if (recvString.Left(1) == "?")
-                            {
-                                log += string.Format("[{0} 응답(오류)]-{1}\r\n", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss:fff"), recvString);
-                                //FuncEx._WriteLog("Interface", log, "Log\\ToBCUData\\");
-                                //FuncEx._WriteErrorLog("tmBCU_Tick", string.Format("[REQUEST 변화없음] 요청PI:{0}/ReturnValue:{1}", String.Format("{0:X2}", int.Parse(row["pi_no"].ToString())), recvString));
-                                continue;
-                            }
-
-                            string sRtnBCU = recvString.Substring(1, 2);
-                            string sRtnPI = recvString.Substring(4, 2);
-                            string sJCnt = recvString.Substring(6, 1);
-                            string sRtnDataBlock = recvString.Substring(7, 7);
-                            string sSkipSignal = "8      ";
-
-                            if (sRtnDataBlock == sSkipSignal)
-                            {
-                                log += string.Format("[{0} 응답(스킵)]-{1}\r\n", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss:fff"), recvString);
-
-                                //this.WorkMessageAdd(string.Format("[REQUEST SKIP] : [pick-{0}] {1} ({2})", row["pick_no"].ToString(), row["pi_log_data"].ToString(), recvString),log);
-                            }
-                            //2018.11.09 김윤화 추가 - 응답 신호 중, DAS의 풀박스를 의미하는 신호("8      ")가 오는 경우는 Skip 하도록 수정
-
-                            //2018.06.11 김윤화 추가 - 요청했던 PI값과 return된 PI값이 같을 경우에만 처리하도록 수정
-                            else if (sJCnt != "0" && recvString.Substring(3, 1) == "r" && String.Format("{0:X2}", int.Parse(row["pi_no"].ToString())) == sRtnPI)
-                            //2018.06.11 김윤화 추가 - 요청했던 PI값과 return된 PI값이 같을 경우에만 처리하도록 수정
-                            {
-                                log += string.Format("[{0} 응답(완료)]-{1} (완료신호전송완료:{2})\r\n", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss:fff"), recvString, BitConverter.ToString(responseByte));
-
-                                ZDeviceManager.Instance.BCU_71.CurrentReceiveData = string.Empty;
-                                ZDeviceManager.Instance.BCU_71.Send(responseByte, 0, responseByte.Length);
-
-                                BCUHelper.Instance.FnPILogUpdate(row["pi_no"].ToString(), "T", null, "P", UICommon.ConfigHelper.Instance.BCUPCNo, recvString);
-
-                                //FuncEx._WriteLog("[응답수신성공]", string.Format("[수신성공응답 완료] : {0} (pi : {1} 수량 : {2})", Encoding.ASCII.GetString(responseByte), sRtnPI, sJCnt), "Log\\BCULogData\\");
-
-                                this.WorkMessageAdd(string.Format("[REQUEST 완료] : [pick-{0}] {1} ({2})(PI:{3}/CNT:{4})", row["pick_no"].ToString(), row["pi_log_data"].ToString(), recvString, sRtnPI, sRtnDataBlock));
-                            }
-                            else if (sJCnt != "0" && recvString.Substring(3, 1) == "r")
-                            {
-                                FuncEx._WriteErrorLog("tmBCU_Tick", string.Format("[REQUEST 다른Return] 요청PI:{0}/ReturnPI:{1} ({2})", String.Format("{0:X2}", int.Parse(row["pi_no"].ToString())), sRtnPI, recvString));
-                            }
-                        }
-                        catch (Exception ex)
-                        {
-                            FuncEx._WriteErrorLog("tmBCU_Tick", string.Format("[REQUEST EXP] 요청PI:{0}/ReturnValue:{1}/ex:{2} ", String.Format("{0:X2}", int.Parse(row["pi_no"].ToString())), recvString, ex.ToString()));
-                            continue;
-                        }
                     }
                     //if (!string.IsNullOrEmpty(lastq))
                     //    this.WorkMessageAdd("마지막REQUEES" + lastq);
@@ -368,12 +237,12 @@ namespace PI_LIGHT
                     if (!this.isRunBCUThread)
                         return;
 
-                    FuncEx._WriteErrorLog("tmBCU_Tick", ex.ToString());
+                    Console.WriteLine("tmBCU_Tick - " + ex.ToString());
                 }
                 finally
                 {
                     if (!string.IsNullOrEmpty(log.Trim()))
-                        FuncEx._WriteLog("Interface", log, "Log\\ToBCUData\\");
+                        Console.WriteLine("Interface - " + log);
 
                     if (this.BCUThread != null)
                         this.BCUThread.Join(50);
@@ -463,9 +332,31 @@ namespace PI_LIGHT
             }
         }
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                string pi_no = (sender as Button).Tag.ToString();
 
+                PIViewModel clickPI = piList.First(pi => pi.PI_NO == pi_no);
 
+                clickPI.LAMPOn = !clickPI.LAMPOn;
 
+                this.DataContext = piList;
 
+                return;
+                if (clickPI == null || !clickPI.LAMPOn)
+                    return;
+
+                string query = string.Format(@"update lt_pi_loc set send_yn = 'P', upd_date = getdate() where pi_no = '{0}' and send_yn = 'T'", clickPI.PI_NO);
+
+                this.FnPILogSelect(query);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                MessageBox.Show(ex.ToString());
+            }
+        }
     }
 }
