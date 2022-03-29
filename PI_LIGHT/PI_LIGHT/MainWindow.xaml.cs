@@ -126,7 +126,7 @@ namespace PI_LIGHT
 
                 }
 
-                this.DataContext = piList;
+                //this.DataContext = piList;
                 //MessageBox.Show(result);
             }
             catch (Exception ex)
@@ -231,6 +231,8 @@ namespace PI_LIGHT
                     }
                     //if (!string.IsNullOrEmpty(lastq))
                     //    this.WorkMessageAdd("마지막REQUEES" + lastq);
+
+
                 }
                 catch (Exception ex)
                 {
@@ -245,7 +247,7 @@ namespace PI_LIGHT
                         Console.WriteLine("Interface - " + log);
 
                     if (this.BCUThread != null)
-                        this.BCUThread.Join(50);
+                        this.BCUThread.Join(500);
                 }
             }
         }
@@ -340,23 +342,49 @@ namespace PI_LIGHT
 
                 PIViewModel clickPI = piList.First(pi => pi.PI_NO == pi_no);
 
-                clickPI.LAMPOn = !clickPI.LAMPOn;
-
-                this.DataContext = piList;
-
-                return;
                 if (clickPI == null || !clickPI.LAMPOn)
                     return;
 
                 string query = string.Format(@"update lt_pi_loc set send_yn = 'P', upd_date = getdate() where pi_no = '{0}' and send_yn = 'T'", clickPI.PI_NO);
 
                 this.FnPILogSelect(query);
+
+                clickPI.LAMPOn = false;
+                clickPI.CNT = "";
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.ToString());
                 MessageBox.Show(ex.ToString());
             }
+        }
+
+        private void btnStart_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                StartPIThread();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                MessageBox.Show(ex.ToString());
+            }
+
+        }
+
+        private void btnEnd_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                StopPIThread();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                MessageBox.Show(ex.ToString());
+            }
+
         }
     }
 }
