@@ -11,13 +11,17 @@ namespace PI_LIGHT
     {
 
         public string PI_NO { get; set; }
-        public string PI_STATUS { get; set; }
+        //public string PI_STATUS { get; set; }
+
+        public string SEND_YN { get; set; }
+
+        public string PICK_NO { get; set; }
 
         //public SolidColorBrush PI_COLOR { get { return (PI_STATUS == "ON") ? Brushes.Red : Brushes.Black; } }
 
         public override string ToString()
         {
-            return string.Format("{0}({1})", PI_NO, PI_STATUS);
+            return string.Format("{0}({1})", PI_NO, SEND_YN);
         }
     }
 }
