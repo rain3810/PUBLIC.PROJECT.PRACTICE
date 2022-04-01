@@ -26,6 +26,7 @@ namespace PI_LIGHT
         //public Lazy<PIList> PIListInstance { get; set; }
         string BCUNO = "";
         string PCNO = "";
+        string CONNString = "";
         public MainWindow()
         {
             //PIListInstance = new Lazy<PIList>();
@@ -105,10 +106,10 @@ namespace PI_LIGHT
             {
                 this.BCUNO = this.txtBCUNO.Text;
                 this.PCNO = this.txtPCNO.Text;
-
+                this.CONNString = this.txtDBConnectionString.Text;
 
                 piList.Clear();
-                sqlCon = new SqlConnection(string.Format("Persist Security Info=False;User ID=sa;Password=tsvr2201@pts;Initial Catalog=GNFOOD_BCU;Server=168.126.28.28,9005"));
+                sqlCon = new SqlConnection(string.Format(this.CONNString));
                 sqlCon.Open();
 
                 SqlCommand com = new SqlCommand(string.Format(@"select wh_code, pi_kind, bcu_no, pc_no, pi_no, loc_code, pi_log_data, pick_no
@@ -258,7 +259,7 @@ namespace PI_LIGHT
             SqlDataReader sqlRd = null;
             try
             {
-                sqlCon = new SqlConnection(string.Format("Persist Security Info=False;User ID=sa;Password=tsvr2201@pts;Initial Catalog=GNFOOD_BCU;Server=168.126.28.28,9005"));
+                sqlCon = new SqlConnection(string.Format(this.CONNString));
                 sqlCon.Open();
 
                 SqlCommand com = new SqlCommand(Query, sqlCon);
