@@ -65,7 +65,7 @@
         </Grid>
         <!--<WrapPanel Grid.Row="1" Orientation="Horizontal" DataContext="{DynamicResource piList}">-->
 
-        <ListBox x:Name="piListBox" Grid.Row="1" ItemsSource="{DynamicResource piList}" HorizontalContentAlignment="Stretch" ItemTemplate="{StaticResource piDataTemplete}" VerticalContentAlignment="Stretch" ScrollViewer.VerticalScrollBarVisibility="Disabled" FlowDirection="LeftToRight" ScrollViewer.CanContentScroll="False" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+        <ListBox x:Name="piListBox" Grid.Row="1" ItemsSource="{DynamicResource piList}" HorizontalContentAlignment="Stretch" ItemTemplate="{StaticResource piDataTemplete}" VerticalContentAlignment="Stretch" ScrollViewer.VerticalScrollBarVisibility="Auto" FlowDirection="LeftToRight" ScrollViewer.CanContentScroll="False" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
             <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel  Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
