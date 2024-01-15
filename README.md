@@ -1,3 +1,5 @@
+[![.NET Core Desktop](https://github.com/rain3810/PUBLIC.PROJECT.PRACTICE/actions/workflows/dotnet-desktop.yml/badge.svg)](https://github.com/rain3810/PUBLIC.PROJECT.PRACTICE/actions/workflows/dotnet-desktop.yml)
+
 # PRIVATE.PROJECT.PRACTICE
     공부하기 위한 샘플 연습용입니다.
 
